@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/vendas")
@@ -18,4 +19,14 @@ public class VendaController {
     public List<Venda> buscarTodas(){
         return  cadastroVenda.buscarTodas();
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Venda adicionar(@RequestBody Venda venda){
+        return  cadastroVenda.salvar(venda);
+    }
+//    @GetMapping("/{id}")
+//    public Optional<Venda> listAllVendasVendedorId(@PathVariable Long id){
+//        return  cadastroVenda.listAllVendaVendedorById(id);
+//    }
 }

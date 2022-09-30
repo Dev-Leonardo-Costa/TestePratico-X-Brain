@@ -1,14 +1,14 @@
 package com.xbrain.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
@@ -22,9 +22,7 @@ public class Venda {
 
     private BigDecimal valor;
 
-//    @CreationTimestamp
-//    @Column(nullable = false, columnDefinition = "datetime")
-//    private LocalDateTime dataVenda;
+    private LocalDate dataVenda = LocalDate.now();
 
     @ManyToOne
     @JoinColumn(name = "vendedor_id", nullable = false)

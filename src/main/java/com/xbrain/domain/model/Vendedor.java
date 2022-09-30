@@ -1,6 +1,7 @@
 package com.xbrain.domain.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -20,5 +21,13 @@ public class Vendedor {
     private Long id;
 
     private String nome;
+
+    private BigDecimal  totalVendas;
+
+    private BigDecimal MediaVendasDiaria;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "vendedor")
+    private List<Venda> vendas = new ArrayList<>();
 
 }
