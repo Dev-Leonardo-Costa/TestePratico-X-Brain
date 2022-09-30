@@ -25,8 +25,9 @@ public class VendaController {
     public Venda adicionar(@RequestBody Venda venda){
         return  cadastroVenda.salvar(venda);
     }
-//    @GetMapping("/{id}")
-//    public Optional<Venda> listAllVendasVendedorId(@PathVariable Long id){
-//        return  cadastroVenda.listAllVendaVendedorById(id);
-//    }
+
+    @GetMapping("/{id}/vendedor")
+    public List<Venda> listAllVendasVendedorId(@PathVariable Long id){
+        return  cadastroVenda.listAllVendaVendedorById(id);
+    }
 }

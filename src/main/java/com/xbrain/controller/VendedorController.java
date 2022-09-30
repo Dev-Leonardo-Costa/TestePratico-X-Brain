@@ -1,6 +1,5 @@
 package com.xbrain.controller;
 
-import com.xbrain.domain.model.Venda;
 import com.xbrain.domain.model.Vendedor;
 import com.xbrain.domain.service.CadastroVendedorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/vendedores")

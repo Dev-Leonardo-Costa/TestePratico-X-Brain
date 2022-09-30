@@ -31,7 +31,7 @@ public class CadastroVendaService {
         return vendaRepository.save(venda);
     }
 
-//    public Optional<Venda> listAllVendaVendedorById(Long id){
-//        return vendaRepository.vendaByVendedorId(id);
-//    }
+    public List<Venda> listAllVendaVendedorById(Long id){
+        return vendaRepository.findAllvendaByVendedor_Id(id);
+    }
 }

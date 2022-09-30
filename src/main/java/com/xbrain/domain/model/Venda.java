@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -22,7 +23,9 @@ public class Venda {
 
     private BigDecimal valor;
 
-    private LocalDate dataVenda = LocalDate.now();
+    @CreationTimestamp
+    @Column(nullable = false, columnDefinition = "datetime")
+    private OffsetDateTime dataVenda;
 
     @ManyToOne
     @JoinColumn(name = "vendedor_id", nullable = false)
