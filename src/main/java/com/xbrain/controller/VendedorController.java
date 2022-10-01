@@ -1,7 +1,9 @@
 package com.xbrain.controller;
 
+import com.xbrain.assembler.VendedorModelAssembler;
 import com.xbrain.domain.model.Vendedor;
 import com.xbrain.domain.service.CadastroVendedorService;
+import com.xbrain.dto.VendedorModelDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,14 +19,18 @@ public class VendedorController {
     @Autowired
     private CadastroVendedorService cadastroVendedor;
 
+    @Autowired
+    private VendedorModelAssembler vendedorModelAssembler;
+
     @GetMapping
-    public List<Vendedor> buscar(){
-        return cadastroVendedor.buscarTodos();
+    public List<VendedorModelDTO> buscar(){
+        return vendedorModelAssembler.toCollectionModelVendedorDTO(cadastroVendedor.buscarTodos());
     }
 
     @GetMapping("/{vendedorId}")
-    public Vendedor buscarPorId(@PathVariable Long vendedorId) {
-        return cadastroVendedor.buscarOuFalhar(vendedorId);
+    public VendedorModelDTO buscarPorId(@PathVariable Long vendedorId) {
+        Vendedor vendedor = cadastroVendedor.buscarOuFalhar(vendedorId);
+        return vendedorModelAssembler.toModelVendedor(vendedor);
     }
 
 }

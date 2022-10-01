@@ -1,13 +1,14 @@
 package com.xbrain.controller;
 
+import com.xbrain.assembler.VendaModelAssembler;
 import com.xbrain.domain.model.Venda;
 import com.xbrain.domain.service.CadastroVendaService;
+import com.xbrain.dto.VendaModelDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/vendas")
@@ -15,19 +16,23 @@ public class VendaController {
     @Autowired
     private CadastroVendaService cadastroVenda;
 
+    @Autowired
+    private VendaModelAssembler vendaModelAssembler;
+
     @GetMapping
-    public List<Venda> buscarTodas(){
-        return  cadastroVenda.buscarTodas();
+    public List<VendaModelDTO> buscarTodas(){
+        return  vendaModelAssembler.toCollectionModelVendaDTO(cadastroVenda.buscarTodas());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Venda adicionar(@RequestBody Venda venda){
-        return  cadastroVenda.salvar(venda);
+    public VendaModelDTO adicionar(@RequestBody Venda venda){
+        return vendaModelAssembler.toModelVenda(cadastroVenda.salvar(venda));
     }
 
-    @GetMapping("/{id}/vendedor")
-    public List<Venda> listAllVendasVendedorId(@PathVariable Long id){
-        return  cadastroVenda.listAllVendaVendedorById(id);
-    }
+//    @GetMapping("/{id}/vendedor")
+//    public List<VendaModelDTO> listAllVendasVendedorId(@PathVariable Long id){
+//        return  toCollectionModelVendaDTO(cadastroVenda.listAllVendaVendedorById(id));
+//    }
+
 }

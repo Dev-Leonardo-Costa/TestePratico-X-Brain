@@ -18,13 +18,13 @@ public class Vendedor {
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long vendedorId;
 
-    private String nome;
+    private String vendedorNome;
 
-    private BigDecimal  totalVendas;
+    private BigDecimal  vendasTotal;
 
-    private BigDecimal MediaVendasDiaria;
+    private BigDecimal vendasMediaDiaria;
 
     @JsonIgnore
     @OneToMany(mappedBy = "vendedor")
