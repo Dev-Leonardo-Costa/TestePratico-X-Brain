@@ -23,12 +23,12 @@ public class VendedorController {
     private VendedorModelAssembler vendedorModelAssembler;
 
     @GetMapping
-    public List<VendedorModelDTO> buscar(){
+    public List<VendedorModelDTO> listar(){
         return vendedorModelAssembler.toCollectionModelVendedorDTO(cadastroVendedor.buscarTodos());
     }
 
     @GetMapping("/{vendedorId}")
-    public VendedorModelDTO buscarPorId(@PathVariable Long vendedorId) {
+    public VendedorModelDTO buscar(@PathVariable Long vendedorId) {
         Vendedor vendedor = cadastroVendedor.buscarOuFalhar(vendedorId);
         return vendedorModelAssembler.toModelVendedor(vendedor);
     }
