@@ -5,6 +5,7 @@ import com.xbrain.domain.exception.NegocioException;
 import com.xbrain.domain.exception.VendedorNaoEncontradaException;
 import com.xbrain.domain.model.Venda;
 import com.xbrain.domain.service.CadastroVendaService;
+import com.xbrain.dto.VendaModelAddDTO;
 import com.xbrain.dto.VendaModelDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,8 +29,9 @@ public class VendaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public VendaModelDTO adicionar(@RequestBody Venda venda) {
+    public VendaModelDTO adicionar(@RequestBody VendaModelAddDTO vendaModelAddDTO) {
         try {
+            Venda venda = vendaModelAssembler.toDomainObject(vendaModelAddDTO);
             return vendaModelAssembler.toModelVenda(cadastroVenda.salvar(venda));
         } catch (VendedorNaoEncontradaException exception) {
             throw new NegocioException(exception.getMessage(), exception);
@@ -40,5 +42,4 @@ public class VendaController {
 //    public List<VendaModelDTO> listAllVendasVendedorId(@PathVariable Long id){
 //        return  toCollectionModelVendaDTO(cadastroVenda.listAllVendaVendedorById(id));
 //    }
-
 }
