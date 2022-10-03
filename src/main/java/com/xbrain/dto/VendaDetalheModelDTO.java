@@ -7,14 +7,11 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Getter
 @Setter
-public class VendaModelDTO {
-
+@Getter
+public class VendaDetalheModelDTO {
     private Long vendaId;
     private BigDecimal vendaValor;
     @JsonFormat(pattern = "dd/MM/yyyy[ HH:mm:ss]")
     private LocalDate vendaData;
-    private VendedorIdNomeModelDTO vendedor;
-
 }

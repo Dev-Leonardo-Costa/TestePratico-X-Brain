@@ -1,5 +1,6 @@
 package com.xbrain.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -7,7 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
@@ -22,8 +23,9 @@ public class Venda {
     private BigDecimal vendaValor;
 
     @CreationTimestamp
-    @Column(nullable = false, columnDefinition = "datetime")
-    private LocalDateTime vendaData;
+    @Column(nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy[ HH:mm:ss]")
+    private LocalDate vendaData;
 
     @JsonIgnore
     @ManyToOne

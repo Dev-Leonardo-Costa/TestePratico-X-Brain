@@ -7,7 +7,7 @@ import com.xbrain.domain.model.Vendedor;
 import com.xbrain.domain.service.CadastroVendedorService;
 import com.xbrain.dto.VedendorDetalheModelDTO;
 import com.xbrain.dto.VendedorAddModelDTO;
-import com.xbrain.dto.VendedorModelDTO;
+import com.xbrain.dto.VendedorIdNomeModelDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class VendedorController {
     private VendedorModelAssembler vendedorModelAssembler;
 
     @GetMapping
-    public List<VedendorDetalheModelDTO> listar(){
+    public List<VedendorDetalheModelDTO> listar() {
         return vendedorModelAssembler.toCollectionModelVendedorDTO(cadastroVendedor.buscarTodos());
     }
 
@@ -37,10 +37,10 @@ public class VendedorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public VedendorDetalheModelDTO adicionar(@RequestBody VendedorAddModelDTO vendedorAddModelDTO){
+    public VendedorIdNomeModelDTO adicionar(@RequestBody VendedorAddModelDTO vendedorAddModelDTO) {
         try {
             Vendedor vendedor = vendedorModelAssembler.toDomainObject(vendedorAddModelDTO);
-            return vendedorModelAssembler.toModelVendedor(cadastroVendedor.salvar(vendedor));
+            return vendedorModelAssembler.toDetalheModelVendedor(cadastroVendedor.salvar(vendedor));
         } catch (VendedorNaoEncontradaException exception) {
             throw new NegocioException(exception.getMessage(), exception);
         }

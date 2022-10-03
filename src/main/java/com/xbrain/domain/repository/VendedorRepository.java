@@ -8,8 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.math.BigDecimal;
 
 @Repository
-public interface VendedorRepository extends JpaRepository<Vendedor, Long> {
-    @Query(value = "SELECT IFNULL(SUM(venda_valor),0) FROM xbrain.venda WHERE vendedor_id = '1'")
-    float getTotalVendas();
-
+public interface VendedorRepository extends JpaRepository<Vendedor, Long>{
 }
