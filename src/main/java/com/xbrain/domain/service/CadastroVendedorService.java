@@ -1,6 +1,5 @@
 package com.xbrain.domain.service;
 
-import com.xbrain.domain.exception.EntidadeNaoEncontradaException;
 import com.xbrain.domain.exception.VendedorNaoEncontradaException;
 import com.xbrain.domain.model.Vendedor;
 import com.xbrain.domain.repository.VendaRepository;
@@ -20,6 +19,10 @@ public class CadastroVendedorService {
 
     public List<Vendedor> buscarTodos(){
         return vendedorRepository.findAll();
+    }
+
+    public Vendedor salvar(Vendedor vendedor){
+        return  vendedorRepository.save(vendedor);
     }
 
     public Vendedor buscarOuFalhar(Long vendedorId){

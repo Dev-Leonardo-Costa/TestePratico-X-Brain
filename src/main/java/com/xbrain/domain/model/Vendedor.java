@@ -26,7 +26,6 @@ public class Vendedor {
 
     private BigDecimal vendasMediaDiaria;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "vendedor")
     private List<Venda> vendas = new ArrayList<>();
 

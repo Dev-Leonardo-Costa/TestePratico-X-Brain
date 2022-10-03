@@ -4,6 +4,7 @@ import com.xbrain.assembler.VendaModelAssembler;
 import com.xbrain.domain.exception.NegocioException;
 import com.xbrain.domain.exception.VendedorNaoEncontradaException;
 import com.xbrain.domain.model.Venda;
+import com.xbrain.domain.repository.VendaRepository;
 import com.xbrain.domain.service.CadastroVendaService;
 import com.xbrain.dto.VendaModelAddDTO;
 import com.xbrain.dto.VendaModelDTO;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -37,9 +39,4 @@ public class VendaController {
             throw new NegocioException(exception.getMessage(), exception);
         }
     }
-
-//    @GetMapping("/{id}/vendedor")
-//    public List<VendaModelDTO> listAllVendasVendedorId(@PathVariable Long id){
-//        return  toCollectionModelVendaDTO(cadastroVenda.listAllVendaVendedorById(id));
-//    }
 }

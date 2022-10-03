@@ -27,8 +27,4 @@ public class CadastroVendaService {
         venda.setVendedor(vendedor);
         return vendaRepository.save(venda);
     }
-
-//    public List<Venda> listAllVendaVendedorById(Long id){
-//        return vendaRepository.findAllvendaByVendedor_Id(id);
-//    }
 }
