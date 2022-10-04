@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -37,7 +38,7 @@ public class VendedorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public VendedorIdNomeModelDTO adicionar(@RequestBody VendedorAddModelDTO vendedorAddModelDTO) {
+    public VendedorIdNomeModelDTO adicionar(@RequestBody @Valid VendedorAddModelDTO vendedorAddModelDTO) {
         try {
             Vendedor vendedor = vendedorModelAssembler.toDomainObject(vendedorAddModelDTO);
             return vendedorModelAssembler.toDetalheModelVendedor(cadastroVendedor.salvar(vendedor));

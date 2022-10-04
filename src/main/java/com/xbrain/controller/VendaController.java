@@ -4,7 +4,6 @@ import com.xbrain.assembler.VendaModelAssembler;
 import com.xbrain.domain.exception.NegocioException;
 import com.xbrain.domain.exception.VendedorNaoEncontradaException;
 import com.xbrain.domain.model.Venda;
-import com.xbrain.domain.repository.VendaRepository;
 import com.xbrain.domain.service.CadastroVendaService;
 import com.xbrain.dto.VendaModelAddDTO;
 import com.xbrain.dto.VendaModelDTO;
@@ -12,7 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,7 +31,7 @@ public class VendaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public VendaModelDTO adicionar(@RequestBody VendaModelAddDTO vendaModelAddDTO) {
+    public VendaModelDTO adicionar(@RequestBody @Valid VendaModelAddDTO vendaModelAddDTO) {
         try {
             Venda venda = vendaModelAssembler.toDomainObject(vendaModelAddDTO);
             return vendaModelAssembler.toModelVenda(cadastroVenda.salvar(venda));
