@@ -1,10 +1,12 @@
 package com.xbrain.domain.model;
 
 
+import com.xbrain.Grups;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -15,12 +17,13 @@ import java.util.List;
 @Entity
 public class Vendedor {
 
+    @NotNull(groups = Grups.VendedorID.class)
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long vendedorId;
 
-    @NotNull
+    @NotBlank
     private String vendedorNome;
 
     private BigDecimal  vendasTotal;
