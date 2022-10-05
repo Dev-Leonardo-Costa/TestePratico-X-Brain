@@ -3,8 +3,10 @@ package com.xbrain.domain.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xbrain.Grups;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -19,6 +21,8 @@ import java.time.LocalDate;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Venda {
 
     @EqualsAndHashCode.Include

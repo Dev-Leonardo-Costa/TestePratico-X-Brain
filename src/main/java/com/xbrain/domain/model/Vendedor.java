@@ -2,8 +2,10 @@ package com.xbrain.domain.model;
 
 
 import com.xbrain.Grups;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -15,6 +17,8 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Vendedor {
 
     @NotNull(groups = Grups.VendedorID.class)
@@ -26,7 +30,7 @@ public class Vendedor {
     @NotBlank
     private String vendedorNome;
 
-    private BigDecimal  vendasTotal;
+    private BigDecimal vendasTotal;
 
     private BigDecimal vendasMediaDiaria;
 
