@@ -29,3 +29,6 @@ Nos retornar dentro de 7 dias, iremos analisar o projeto e agendar uma entrevist
 - DEVTOOL para sempre atualizar o start da aplicação
 - LOMBOK para tirar os codigos repedidos, como os contrutor dos Get, Set, Construres, HashCode
 - ASSURED para construir os testes automatizado 
+- MODELMAPPER para trabalhar melhor com os modelos DTOs
+- SPRINGFOX conhecido como SWUGGER para a documentação da API 
+# Segui o link: http://localhost:8080/swagger-ui/index.html usar depois que subir aplicação    
