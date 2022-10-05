@@ -36,6 +36,11 @@ public class VendedorController {
         return vendedorModelAssembler.toModelVendedor(vendedor);
     }
 
+    @GetMapping("/buscar-por-nome-vendedor")
+    public List<Vendedor> buscarPorNome(String nome) {
+        return  cadastroVendedor.buscarPorNomeVendedor(nome);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public VendedorIdNomeModelDTO adicionar(@RequestBody @Valid VendedorAddModelDTO vendedorAddModelDTO) {

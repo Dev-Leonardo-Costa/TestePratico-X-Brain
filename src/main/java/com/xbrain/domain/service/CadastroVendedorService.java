@@ -30,4 +30,8 @@ public class CadastroVendedorService {
                 .orElseThrow(() -> new VendedorNaoEncontradaException(vendedorId));
     }
 
+    public List<Vendedor> buscarPorNomeVendedor(String nome){
+        return vendedorRepository.vendedorNome(nome);
+    }
+
 }
