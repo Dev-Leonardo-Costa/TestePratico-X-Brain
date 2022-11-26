@@ -45,4 +45,10 @@ public class Venda {
     @ManyToOne
     @JoinColumn(name = "vendedor_id", nullable = false)
     private Vendedor vendedor;
+
+    public Venda(Long vendaId, BigDecimal vendaValor, Vendedor vendedor) {
+        this.vendaId = vendaId;
+        this.vendaValor = vendaValor;
+        this.vendedor = vendedor;
+    }
 }

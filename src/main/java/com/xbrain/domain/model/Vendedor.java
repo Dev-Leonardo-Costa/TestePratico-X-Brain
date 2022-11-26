@@ -30,11 +30,23 @@ public class Vendedor {
     @NotBlank
     private String vendedorNome;
 
-    private BigDecimal vendasTotal;
+//    private BigDecimal vendasTotal;
 
     private BigDecimal vendasMediaDiaria;
 
     @OneToMany(mappedBy = "vendedor")
     private List<Venda> vendas = new ArrayList<>();
 
+    public double getTotal(){
+        double vendasTotal = 0.0;
+        for (Venda x : vendas){
+           vendasTotal += x.getTotalDeVendas();
+        }
+        return vendasTotal;
+    }
+
+    public Vendedor(Long vendedorId, String vendedorNome) {
+        this.vendedorId = vendedorId;
+        this.vendedorNome = vendedorNome;
+    }
 }

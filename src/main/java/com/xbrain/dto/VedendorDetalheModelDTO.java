@@ -1,6 +1,5 @@
 package com.xbrain.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +10,7 @@ import java.util.List;
     coloquei essa anotação para mostrar os valores da propriedade se não estiver null,
     pq não conseguir resolver a regra.
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+
 @Setter
 @Getter
 public class VedendorDetalheModelDTO {
@@ -20,4 +19,6 @@ public class VedendorDetalheModelDTO {
     private BigDecimal vendasTotal ;
     private BigDecimal vendasMediaDiaria;
     private List<VendaDetalheModelDTO> vendas;
+
+
 }

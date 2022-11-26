@@ -3,6 +3,7 @@ package com.xbrain.exceptionhandler;
 import com.fasterxml.jackson.databind.JsonMappingException.Reference;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.PropertyBindingException;
+import com.xbrain.domain.exception.EntidadeNaoEncontradaException;
 import com.xbrain.domain.exception.NegocioException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.TypeMismatchException;
@@ -80,6 +81,20 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         }
 
         return super.handleTypeMismatch(exception, headers, status, request);
+    }
+
+
+    @ExceptionHandler(EntidadeNaoEncontradaException.class)
+    public ResponseEntity<?> handleEntidadeNaoEncontrada(EntidadeNaoEncontradaException ex,
+                                                         WebRequest request) {
+
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        ProblemType problemType = ProblemType.RECURSO_NAO_ENCONTRADO;
+        String detail = ex.getMessage();
+
+        Problem problem = createProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
     }
 
     @ExceptionHandler(NegocioException.class)
